@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Competitions | AU SMIF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    purpleBrand: '#550D8A',
+                    goldBrand: '#F5AA01',
+                    purpleBackground: '#695981',
+                    goldBackground: '#d79133',
+                        }
+                    }
+                }
+            };
+    </script>
+
+</head>
+
+<body class="bg-gray-100 text-gray-900 overflow-x-hidden">
+
+    <!-- Navbar -->
+    <div class="fixed top-0 left-0 right-0 z-[70] bg-white p-3 text-black shadow-lg flex flex-wrap items-center justify-between">
+        <a href="smiffromscratch.html">
+            <img src="smiflogo.png" height="150px" width="150px" alt="SMIF Logo">
+        </a>
+        <!-- <h1 class="text-2xl font-bold">SMIF</h1> -->
+        <nav class="p-1 space-x-6">
+          <a class="topmenu font-semibold"  href="#tracker">Tracker</a>
+          <a class="topmenu font-semibold" href="#annual_report">Annual Report</a>
+          <a class="topmenu font-semibold" href="about_us.html">About Us</a>
+          <a class="topmenu font-semibold" href="#officers">Officers</a>
+          <a class="topmenu font-semibold" href="competitions.html">Competitions</a>
+          <a class="topmenu font-semibold" href="#articles">Articles</a>
+        </nav>
+    </div>
+
+    <!-- Competitions -->
+    <section id="competitions" class="p-4 mt-[80px]">
+        <h2 class="text-2xl font-bold mb-4">Competition Applications </h2>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-2"> <!-- added flex-col and sm:flex-row to put text boxes into a column on mobile -->
+            <!-- GAME Forum -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+                <h2 class="text-xl font-bold mb-4 text-center">GAME Forum</h2>
+                <h2 class="text-sm font-bold mb-4 text-center">April 3-4</h2>
+    
+                <div class="bg-goldBrand/50 rounded-2xl shadow-lg p-8 flex-1">
+                    <ul class="list-disc list-outside pl-6 text-gray-700 text-base leading-normal">
+                        <li>
+                            Hosted by Quinnipiac University in New York City, the Global Asset Management Education (GAME) Forum connects students with top investment professionals through panels, workshops, and live portfolio competitions.
+                        </li>
+                        <li>
+                            It's a rare opportunity to network directly with Wall Street leaders and experience the fast-paced world of global asset management firsthand.
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="flex justify-center mt-auto">
+                    <button id="applyBtn" class="mt-4 px-6 py-2 bg-purpleBrand text-white rounded hover:text-goldBrand" onclick="toggleModal()">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+    
+            <!-- CFA Research Competition -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+                <h2 class="text-xl font-bold mb-4 text-center">CFA Research Competition</h2>
+                <h2 class="text-sm font-bold mb-4 text-center">Prospective Date</h2>
+    
+                <div class="bg-goldBrand/50 rounded-2xl shadow-lg p-8 flex-1">
+                    <ul class="list-disc list-outside pl-6 text-gray-700 text-base leading-normal">
+                        <li>
+                            Teams research and analyze a publicly traded company, then present a detailed equity report and valuation to a panel of industry experts.
+                        </li>
+                        <li>
+                            The competition mirrors real-world investment analysis, sharpening your financial modeling, presentation, and teamwork skills at a professional level.
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="flex justify-center mt-auto">
+                    <button id="applyBtn" class="mt-4 px-6 py-2 bg-purpleBrand text-white rounded hover:text-goldBrand" onclick="toggleModal()">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- College Fed Challenge -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+                <h2 class="text-xl font-bold mb-4 text-center">College Fed Challenge</h2>
+                <h2 class="text-sm font-bold mb-4 text-center">October 3</h2>
+    
+                <div class="bg-goldBrand/50 rounded-2xl shadow-lg p-8 flex-1">
+                    <ul class="list-disc list-outside pl-6 text-gray-700 text-base leading-normal">
+                        <li>
+                            The Fed Challenge simulates a real Federal Open Market Committee meeting, where students analyze economic conditions and propose monetary policy recommendations.
+                        </li>
+                        <li>
+                            It's perfect for those interested in economics, finance, and policymaking, offering an insider's view into how central banking decisions are made.
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="flex justify-center mt-auto">
+                    <button id="applyBtn" class="mt-4 px-6 py-2 bg-purpleBrand text-white rounded hover:text-goldBrand" onclick="toggleModal()">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup/Modal for Competition Applications  -->
+    <section id="appli_modal">
+
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+        <div class="bg-white p-3 rounded-lg w-t sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 relative z-60"> <!-- 'relative' added here -->
+            <!-- Modal header with close button positioned in top-right corner -->
+            <h2 class="text-xl font-semibold pb-4 flex justify-center">Competition Application</h2>
+            <button onclick="toggleModal()" class="text-gray-400 hover:text-gray-600 absolute top-4 right-4"> <!-- 'absolute', 'top-2', 'right-2' for positioning -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+    <form id="comp_appli_form">
+
+
+        <!-- Full Name -->
+        <div class="mb-4">
+            <label for="applicant_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name:</label>
+            <input type="text" id="applicant_name" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
+            <input type="email" id="email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto">
+        </div>
+
+        <!-- Description -->
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description:</label>
+            <textarea name="description" id="description" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto h-32 resize-none" placeholder="Your major, year, why you're interested in the competition, etc."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center mt-4">
+            <button type="submit" id="submitBtn" class="px-6 py-2 bg-purpleBrand text-white rounded hover:text-goldBrand">
+                Submit
+            </button>
+        </div>
+    </form>
+
+
+            </div>
+        </div>
+
+    <!-- JavaScript Toggle for Modal -->
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+
+    <!-- JavaScript for Printing to Console -->
+     <script>
+        const form = document.getElementById("comp_appli_form");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); //Prevents the default submission action from taking place and refreshing the page
+            console.log(e.target.competition.value);
+            console.log(e.target.applicant_name.value);
+            console.log(e.target.email.value);
+            console.log(e.target.description.value);
+        });
+     </script>
+
+</section>
+
+
+    <!-- Footer -->
+    <section id="footer" class="">
+        <div class="bg-purpleBackground pb-8 w-full">
+            <div class="flex flex-col sm:flex-row justify-around mx-auto mx-w-screen-xl   pt-10 mb-6">
+                <div class="flex flex-col items-center sm:items-start justify-center">
+                    <h2 class="text-4xl font-bold text-gray-100 mb-5 divide-y">
+                        Student <br> Managed <br> Investment <br> Fund
+                    </h2>
+                    <hr class="border-t-2 border-gray-300 mb-5 w-full">
+                    <img src="alfred-logo.svg" alt="" height="250px" width="250px">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-100 text-center mb-2">Contact Us</h3>
+                    <hr class="flex-grow border-t border-gray-300 mb-5 border-t-2">
+                    <p class="block text-lg text-gray-200 mb-5"> Email: ms71@alfred.edu</p>
+                    <p class="block text-lg text-gray-200 mb-5"> Phone: +1 (607) 454-1588</p>
+                    <p class="block text-lg text-gray-200 mb-5"> Address: 1 Saxon Dr <br> **** Powell Campus Center</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-100 text-center mb-2">Join Us!</h3>
+                    <hr class="flex-grow border-t border-gray-300 mb-5 border-t-2">
+                    <form id="join_us_form">
+                        <!-- Full Name -->
+                        <div class="mb-4">
+                            <label for="applicant_name" class="block text-md font-medium text-gray-200 mb-1">Full Name:</label>
+                            <input type="text" id="applicant_name" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+
+                        <!-- School Email -->
+                        <div class="mb-4">
+                            <label for="au_email" class="block text-md font-medium text-gray-200 mb-1">AU Email:</label>
+                            <input type="email" id="au_email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-4">
+                            <label for="phone_num" class="block text-md font-medium text-gray-200 mb-1">Phone Number:</label>
+                            <input type="tel" id="phone_num" name="phone_num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="pl-10">
+                
+                
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+</body>
+</html>

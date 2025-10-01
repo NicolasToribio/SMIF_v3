@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AU SMIF</title>
+
+    <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css " rel="stylesheet">
+    <script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js "></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    purpleBrand: '#550D8A',
+                    goldBrand: '#F5AA01',
+                    purpleBackground: '#695981',
+                    goldBackground: '#d79133',
+                        }
+                    }
+                }
+            };
+    </script>
+
+<style>
+    .splide__slide {
+    opacity: 0.6;
+    }
+
+    .splide__slide.is-active {
+    opacity: 1;
+    }
+
+    /* .splide__slide img {
+    width: 100%;
+    height: auto;
+    } */
+
+    .splide__slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .thumbnails {
+    display: flex;
+    margin: 1rem auto 0;
+    padding: 0;
+    justify-content: center;
+    }
+
+
+    .thumbnail {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0 0.2rem;
+    cursor: pointer;
+    }
+
+
+    .thumbnail img {
+    width: 100%;
+    height: auto;
+    }
+
+    /* Force main carousel to be 16:9 */
+    #main-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* background-color: #1C1917; old background color*/
+    background-color: #292524; /* doesn't change anything, defaults to the color above, not sure why */
+    overflow: hidden;
+    }
+
+    /* Splide uses track and slide wrappers — this ensures full coverage */
+    #main-carousel .splide__track,
+    #main-carousel .splide__list,
+    #main-carousel .splide__slide {
+    height: 100%;
+    }
+
+    /* Display all images fully, even if portrait */
+    #main-carousel .splide__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows entire image inside the frame */
+    background-color: #1C1917; /* helps show "letterbox" if image is narrow/tall */
+    }
+
+    /* Custom classes for SplideJS arrows */
+    .my-class-arrow {
+        background-color: white;
+        color: black;
+        border-radius: 15px;
+    }
+
+    .my-class-prev {
+        background-color: white;
+        color: black;
+        border-radius: 15px;
+        
+        position: absolute;
+        left: -55px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .my-class-next {
+        background-color: whitesmoke;
+        color: black;
+        border-radius: 15px;
+
+        position: absolute;
+        right: -55px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+
+
+
+
+</style>
+
+</head>
+
+
+
+<body class="bg-gray-100 text-gray-900 overflow-x-hidden">  <!-- overflow-x-hidden to prevent horizontal scrolling -->
+
+   <!-- Navbar -->
+<div class="fixed top-0 left-0 right-0 z-[70] bg-white p-3 text-black shadow-lg flex flex-wrap items-center justify-between">
+  <a href="smiffromscratch.html">
+    <img src="smiflogo.png" height="150px" width="150px" alt="SMIF Logo">
+  </a>
+
+  <nav class="p-1 space-x-6 flex items-center">
+    <!-- Competitions Dropdown -->
+    <div class="relative group inline-block">
+      <div class="flex items-center space-x-1 cursor-pointer">
+        <a class="topmenu font-semibold menu-hover">Competitions</a>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="h-5 w-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div
+        class="invisible absolute z-50  w-32 flex-col bg-white py-1 px-4 text-gray-800 shadow-xl group-hover:visible rounded-lg">
+        <a class="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black" href="game.html">GAME</a>
+        <a class="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black" href="cfa.html">CFA</a>
+        <a class="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black" href="college_fed.html">College Fed</a>
+      </div>
+    </div>
+
+    <!-- Other Nav Items -->
+    <a class="topmenu font-semibold" href="#tracker">Tracker</a>
+    <a class="topmenu font-semibold" href="#annual_report">Annual Report</a>
+    <a class="topmenu font-semibold" href="about_us.html">About Us</a>
+    <a class="topmenu font-semibold" href="#officers">Officers</a>
+    <a class="topmenu font-semibold" href="#articles">Articles</a>
+  </nav>
+</div>
+
+    <!-- border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative -->
+
+    <!-- Background image and filter -->
+    <div class="relative w-full h-[50vh] bg-[url('olinBetter.jpg')] bg-cover bg-bottom mt-[80px]">
+        <div class="absolute inset-0 bg-white/40"></div>
+        <div class="relative z-10 flex justify-center items-center h-full">
+            <!-- <div class="bg-white/50 rounded-md p-2.5"> -->
+                <img src="alfredlogo.png" alt="Logo" class="w-[900px] h-[300px] object-contain" />
+            <!-- </div> -->
+          </div>
+    </div>
+
+
+    <!-- Leaders -->
+    <section id="officers" class="p-4">
+        <h2 class="text-2xl font-bold mb-4">Officers</h2>
+        <div class="flex flex-wrap justify-center gap-8 mb-4">
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="maksym.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Maksym <br> Smirnov</h6>
+                <p class="text-gray-500 text-[15px] my-1">President</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/maksymka-smirnov/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+              <img src="chris.jpg" 
+                   class="h-[80px] mx-auto" />
+              <h6 class="text-[20px] font-bold mt-2 mb-1">Christopher <br> Coyle</h6>
+              <p class="text-gray-500 text-[15px] my-1">Vice President</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/christopher-f-coyle/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+              <img src="artem.jpg" 
+                   class="h-[80px] mx-auto" />
+              <h6 class="text-[20px] font-bold mt-2 mb-1">Artem <br> Kolisnychenko</h6>
+              <p class="text-gray-500 text-[15px] my-1">Treasurer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/artem-kolisnychenko/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+            <img src="andrii.jpg" 
+                    class="h-[80px] mx-auto" />
+            <h6 class="text-[20px] font-bold mt-2 mb-1">Andrii <br> Maltsev</h6>
+            <p class="text-gray-500 text-[15px] my-1">Secretary</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/maltsevandrii/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Regular Officers -->
+        <div class="flex flex-wrap justify-center gap-8">
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="nicolas.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Nicolas <br> Toribio</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/nicolas-toribio" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="benjamin.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Benjamin <br> Klee</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/ben-klee/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="landon.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Landon <br> Berry</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/landon-berry-aa4641283/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="george.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">George <br> Fearon</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/george-fearon-123007325/" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="lisa.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Lisa <br> Thomas</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/lisaabgailthomas/o" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-gray-400 rounded-md text-center p-2 sm:p-4 w-[1in] sm:w-[2in] shadow-md text-[20px] relative">
+                <img src="omar.jpg" 
+                        class="h-[80px] mx-auto" />
+                <h6 class="text-[20px] font-bold mt-2 mb-1">Omar <br> Allari</h6>
+                <p class="text-gray-500 text-[15px] my-1">Officer</p>
+
+                <div class="absolute top-1 right-1">
+                    <a href="https://www.linkedin.com/in/omar-allari-30a631294" target="_blank">
+                        <img src="linkedinlogo.png" class="h-[20px] mx-auto"alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+
+    </section>
+
+
+   
+<!-- Splide Gallery -->
+<details class="text-2xl font-bold mb-4 ml-4">
+    <summary>Gallery</summary>
+    <div id="carousel" class="flex flex-col justify-center items-center">
+        <div class="w-full max-w-2xl 2xl:max-w-3xl bg-stone-800 flex flex-col justify-center items-center mt-6 mb-2 pl-4 pr-4">
+            <!-- Main Carousel -->
+            <div id="main-carousel" class="splide w-full sm:w-2/3 max-w-3xl mt-10" aria-label="Main Image Gallery">
+                <!-- <div style="position: relative"> -->
+                <!-- </div> -->
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="maksym.jpg" alt="Image 1">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="artem.jpg" alt="Image 2">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="andrii.jpg" alt="Image 3">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="olinBetter.jpg" alt="Image 4">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="smif-3.jpg" alt="Image 5">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="financepictureau.jpg" alt="Image 6">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Thumbnail Carousel -->
+            <div id="thumbnail-carousel" class="splide relative mt-4 w-full sm:w-2/3 max-w-3xl mb-6"
+                aria-label="Thumbnail Navigation">
+                <div class="position: relative">
+                </div>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="maksym.jpg" alt="Image 1">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="artem.jpg" alt="Image 2">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="andrii.jpg" alt="Image 3">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="olinBetter.jpg" alt="Image 4">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="smif-3.jpg" alt="Image 5">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="financepictureau.jpg" alt="Image 6">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</details>
+
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function () {
+        var main = new Splide( '#main-carousel', {
+            type      : 'slide',
+            rewind    : true,
+            pagination: false,
+            arrows    : false,
+            
+        } );
+
+
+        var thumbnails = new Splide( '#thumbnail-carousel', {
+            fixedWidth  : 100,
+            fixedHeight : 60,
+            gap         : 10,
+            rewind      : true,
+            pagination  : false,
+            focus       : 'center',
+            isNavigation: true,
+            classes: {
+                arrows: 'splide__arrows my-class-arrow',
+                arrow: 'splide__arrow my-class-arrow',
+                prev: 'splide__arrow--prev my-class-prev',
+                next: 'splide__arrow--next my-class-next',
+            },
+            breakpoints : {
+            600: {
+                fixedWidth : 60,
+                fixedHeight: 44,
+            },
+            },
+        } );
+
+
+        main.sync( thumbnails );
+        main.mount();
+        thumbnails.mount();
+        } );
+    </script>
+
+
+    <!-- Annual Report PDF -->
+    <section id="annual_report" class="p-4">
+        <details class="text-2xl font-bold mb-4">
+            <summary class="mb-4">Annual Report</summary>
+        <div class="flex flex-wrap justify-center relative" style="padding-top: 56.25%;"> <!-- 16:9 ratio padding-top -->
+            <iframe src="smif_notes.pdf" class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[85vw] h-full" frameborder="0"></iframe>
+        </div>
+        </details>
+        
+    </section>
+
+    
+
+
+
+
+
+   
+
+
+    <!-- Footer -->
+    <section id="footer" class="">
+        <div class="bg-purpleBackground pb-4 w-full "> <!-- previously had pb-8 -->
+            <div class="flex flex-col sm:flex-row justify-around mx-auto mx-w-screen-xl items-center pt-6 mb-6"> <!-- items-center or items-end to control vertical alignment-->
+                
+                <!-- Left -->
+                <div class="flex flex-col items-center sm:items-start w-[180px] sm:w-[220px] md:w-[260px]">
+                    <h2 class="text-4xl font-bold text-gray-100 mb-5 divide-y">
+                        Student <br> Managed <br> Investment <br> Fund
+                    </h2>
+                    <hr class="border-t-2 border-gray-300 mb-5 w-full"> <!-- Previously mb-3 -->
+
+                    <div class="flex flex-row justify-center gap-4">
+                        <a href="https://www.linkedin.com/in/maksymka-smirnov/" target="_blank">
+                            <img src="linkedinlogowhite.png" class="h-[30px] mx-auto"alt="LinkedIn Logo">
+                        </a>
+
+                        <a href="https://www.instagram.com/smifau/" target="_blank">
+                            <img src="instagramlogowhite.png" class="h-[30px] mx-auto"alt="LinkedIn Logo">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Middle -->
+                <div class="w-[125px] sm:w-[150px] md:w-[200px]">
+                    <h3 class="text-2xl font-bold text-gray-100 text-center mb-1 ">Join Us!</h3>
+                    <hr class="flex-grow border-t-2 border-gray-300 mb-3 border-t-2">
+                    <form id="join_us_form">
+                        <!-- Full Name -->
+                        <div class="mb-2">
+                            <label for="applicant_name" class="block text-md font-medium text-gray-200">Full Name:</label>
+                            <input type="text" id="applicant_name" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+
+                        <!-- School Email -->
+                        <div class="mb-2">
+                            <label for="au_email" class="block text-md font-medium text-gray-200">AU Email:</label>
+                            <input type="email" id="au_email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-2">
+                            <label for="phone_num" class="block text-md font-medium text-gray-200">Phone Number:</label>
+                            <input type="tel" id="phone_num" name="phone_num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded px-3 py-2 w-full mx-auto shadow-lg">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex justify-center mt-4">
+                            <button type="submit" id="submitBtn" class="px-6 py-2 bg-goldBackground text-textBlack rounded transition-colors duration-150 ease-in hover:text-white">
+                                Submit
+                            </button>
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+                <!-- Right -->
+                <div class="w-[180px] sm:w-[220px] md:w-[260px]">
+                    
+                    
+                    
+                    <p class="block text-lg text-gray-200 mb-2 text-right">Olin College of Business</p>
+                    <p class="block text-lg text-gray-200 mb-2 text-right">1 Saxon Dr.</p>
+                    <p class="block text-lg text-gray-200 mb-2 text-right">Alfred, New York</p>
+                    <p class="block text-lg text-gray-200 mb-2 text-right">ms71@alfred.edu</p>
+                    <hr class="border-t-2 border-gray-300 mb-3 w-full"> <!-- Previously mb-3 -->
+                    <img src="alfred-logo.svg" alt="" height="250px" width="250px" class="mb-2 ml-auto">
+                    
+                    
+                </div>
+
+           
+                
+
+            </div>
+            <div class="pl-10">
+                
+                
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
