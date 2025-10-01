@@ -1,7 +1,12 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
 *.py[codz]
 *$py.class
+
+# OS
+.DS_Store
+Thumbs.db
 
 # C extensions
 *.so
