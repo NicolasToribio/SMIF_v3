@@ -1,7 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import plotly.express as px
-
+import numpy as np
 
 tickersdict = {
     "AAPL": 82,
@@ -68,6 +68,10 @@ final_df = final_df.rename(columns={"index": "Ticker"})
 
 #print(final_df)
 
+# Ensuring correct dtypes, eliminating potential factors causing hoverdata bug
+final_df["Closing Price"] = final_df["Closing Price"].astype(float)
+final_df["Shares Owned"] = final_df["Shares Owned"].astype(int)
+
 
 pf_donut_chart = px.pie(
     final_df,
@@ -81,9 +85,9 @@ pf_donut_chart.update_traces(
     textinfo = 'label+percent',
     hovertemplate= (
         "<b>%{label}</b><br>"
-        "Total Value: %{value}<br>"
-        "Closing Price: %{customdata[0]}<br>"
-        "Shares Owned: %{customdata[1]}<br>"
+        "Total Value: %{value}<br>" #fix formatting later to show trailing 0 for cents
+        "Closing Price: %{customdata[0][0]:,.2f}<br>" #double indexing because PX wraps trace data inside a list
+        "Shares Owned: %{customdata[0][1]:,d}<br>"
         "<extra></extra>"
     )
 )
@@ -91,7 +95,7 @@ pf_donut_chart.update_traces(
 pf_donut_chart.update_layout(autosize=False, width=900, height=900, showlegend=False)
 pf_donut_chart.show()
 
-print(pf_donut_chart.data[0].customdata[:5])
+#print(pf_donut_chart.data[0].customdata[:5])
 
 
 
